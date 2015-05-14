@@ -14,7 +14,7 @@ import java.util.ArrayList;
   
   public void setup(){
     
-    size(1024,768, P2D); 
+    size(2000,2000, P2D); 
 
     stuff = loadStrings("keyTracker.txt");
     println("loaded"); 
