@@ -51,6 +51,7 @@ int currentTweet;
     String t = "The mouse is at: " + s;
     text(t, 10, 40); 
     text("Press ^ to quit and save the data to a file", 10, 60); 
+    text("Make sure this is an application build", 10, 80); 
     writer.println(s);
   }
   public void keyPressed()

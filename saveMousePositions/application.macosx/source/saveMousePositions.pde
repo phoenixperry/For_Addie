@@ -23,8 +23,12 @@ import java.awt.PointerInfo;
 import java.io.*;
 
   PrintWriter writer; 
+  PFont f; 
   public void setup() 
   {
+    f = loadFont("Serif-16.vlw");
+   textFont(f, 16);  
+    size(300, 100); 
     try {
     writer = new PrintWriter("keyTracker.txt", "UTF-8");
   } catch (FileNotFoundException e) {
@@ -39,10 +43,15 @@ import java.io.*;
 int currentTweet;
   public void draw()
   {
+    background (0); 
     PointerInfo inf = MouseInfo.getPointerInfo();
     Point p = inf.getLocation();
     println(p); 
     String  s = Integer.toString(p.x) + "," + Integer.toString(p.y); 
+    String t = "The mouse is at: " + s;
+    text(t, 10, 40); 
+    text("Press ^ to quit and save the data to a file", 10, 60); 
+    text("Make sure this is an application build", 10, 80); 
     writer.println(s);
   }
   public void keyPressed()
