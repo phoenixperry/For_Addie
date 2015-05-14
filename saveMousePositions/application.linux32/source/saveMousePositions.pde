@@ -46,7 +46,7 @@ int currentTweet;
     background (0); 
     PointerInfo inf = MouseInfo.getPointerInfo();
     Point p = inf.getLocation();
-    println(p); 
+    //  println(p); 
     String  s = Integer.toString(p.x) + "," + Integer.toString(p.y); 
     String t = "The mouse is at: " + s;
     text(t, 10, 40); 
