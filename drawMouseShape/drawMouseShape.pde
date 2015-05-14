@@ -14,7 +14,7 @@ import java.util.ArrayList;
   
   public void setup(){
     
-    size(displayWidth,displayHeight, P2D); 
+    size(1024,768, P2D); 
 
     stuff = loadStrings("keyTracker.txt");
     println("loaded"); 
@@ -55,8 +55,11 @@ import java.util.ArrayList;
     println(points.size()); 
     //DrawShapeData();
     for(int j=0; j < points.size(); j=j+2){
-      PVector p = new PVector(points.get(j), points.get(j+1)); 
-      pointsAsVector.add(p);
+     if(j < points.size()-1)
+      {
+        PVector p = new PVector(points.get(j), points.get(j+1)); 
+        pointsAsVector.add(p);
+      }
     } 
     println(pointsAsVector.size()); 
   } 
