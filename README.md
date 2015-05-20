@@ -1,14 +1,14 @@
 #  processing app that captures mouse movements and then a second app that loads and draws that data
 
 
-Second option-- to track only the mouse points for extended sessions (I found the .pde to bog down my sister if ran for more than 10 mins)
+// Second option if you need to track mouse points for extended sessions (I found the .pde running would bog my system down if ran for more than 10 mins)
 
-try this via terminal (assuming you're on linux LTE-- Addie tested/did this!)
+// try this via terminal (assuming you're on linux LTE )
 
-1) install xdotool with:
-   sudo apt-get install xdotool
+install xdotool with: sudo apt-get install xdotool
 
-2) place following in a /mousetracker.sh file
+place following in a /mousetracker.sh file
+
 ###########
 while :
 do
@@ -17,13 +17,10 @@ do
     echo ""
     sleep 1  # delay loop one second
 done
+
 ###########
 
-3) run:
-    bash mousetracker.sh > positions.txt
-
-4) monitor mouse coordinates in positions.txt with
-    tail -f positions.txt
+run:  bash mousetracker.sh > positions.txt (you can monitor mouse coordinates in positions.txt in the terminal with tail -f positions.txt )
     
     
-    // once you have a complete position.txt you can then use this for the .pde draw file -aw
+    // once you have a complete position.txt you can then use this .txt for the .pde draw file without cuasing memory issues 
