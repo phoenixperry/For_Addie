@@ -24,6 +24,7 @@ import java.io.*;
 
   PrintWriter writer; 
   PFont f; 
+  boolean pressed = false;
   public void setup() 
   {
     f = loadFont("Serif-16.vlw");
@@ -50,19 +51,28 @@ int currentTweet;
     String t = "The mouse is at: " + s;
     fill(255,255,255); 
     text(t, 10, 40); 
-    text("Press ^ to quit and save the data to a file", 10, 60); 
-    fill(255,255,0); 
-    text("Make sure this is an application build", 10, 80); 
-    fill(0,255,0); 
-    text("When you are done, drag the keyTracker.txt \nfile into the drawMouseShape sketch", 10, 100); 
+   
+    fill(0,255,255); 
+    rect(10,100, 200,200); 
+    fill(0,0,0);
+    text("press to quit", 30, 130); 
     writer.println(s);
     println(s); 
+    
+    if(mouseX > 10 && mouseX < 200 && mouseY >100 && mouseY < 200) {
+      fill(255,255,0); 
+      rect(10,100, 200,200); 
+      fill(0,0,0);
+      text("press to quit", 30, 130); 
+      pressed = true; 
+    }
+ 
   }
-  public void keyPressed()
-  {
-    if(key == '^'){
+  public void mousePressed(){
+   if(pressed){
       writer.flush();
       writer.close();
       exit();
-    } 
+   } 
   }
+ 
