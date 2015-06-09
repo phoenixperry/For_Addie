@@ -30,11 +30,8 @@ import java.io.*;
    textFont(f, 16);  
     size(300, 150); 
     try {
-    writer = new PrintWriter("keyTracker.txt", "UTF-8");
-  } catch (FileNotFoundException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-  } catch (UnsupportedEncodingException e) {
+    writer = createWriter("keyTracker.txt");
+  } catch (Exception e ) {
     // TODO Auto-generated catch block
     e.printStackTrace();
   }
@@ -43,6 +40,8 @@ import java.io.*;
 int currentTweet;
   public void draw()
   {
+
+    
     background (0); 
     PointerInfo inf = MouseInfo.getPointerInfo();
     Point p = inf.getLocation();
@@ -57,6 +56,7 @@ int currentTweet;
     fill(0,255,0); 
     text("When you are done, drag the keyTracker.txt \nfile into the drawMouseShape sketch", 10, 100); 
     writer.println(s);
+    println(s); 
   }
   public void keyPressed()
   {
