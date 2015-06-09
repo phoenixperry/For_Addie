@@ -4,21 +4,26 @@ import java.awt.Point;
 import java.io.*; 
 import java.util.Scanner;
 import java.util.ArrayList; 
+import java.util.*;
 
 
   ArrayList<PVector> pointsAsVector = new ArrayList<PVector>(); 
+  ArrayList<PVector> pointsScaledToScreen = new ArrayList<PVector>(); 
   PShape s; 
   ArrayList<Integer> points = new ArrayList<Integer>(); 
   String[] stuff; 
   int counter=0; 
-  
-  public void setup(){
-    
-    size(1680,1049, P2D); 
+ PVector sizeOfScreen; 
+ 
+   public void setup(){
+    sizeOfScreen = new PVector(displayWidth, displayHeight); 
+    pointsScaledToScreen = new ArrayList(); 
+    size(400,400, P2D); 
 
     stuff = loadStrings("keyTracker.txt");
     println("loaded"); 
     LoadShapeData(); 
+    scaleToScreen();
     smooth();
     background(255);
   } 
@@ -29,12 +34,22 @@ import java.util.ArrayList;
     strokeWeight(0.5f);
     noFill();
     beginShape();
-      for(int i =0; i < pointsAsVector.size(); i++)
+      for(int i =0; i < pointsScaledToScreen.size(); i++)
       {
-        vertex(pointsAsVector.get(i).x,pointsAsVector.get(i).y);
+        vertex(pointsScaledToScreen.get(i).x,pointsScaledToScreen.get(i).y);
       }
     endShape();
     
+  } 
+  public void scaleToScreen(){
+    
+       for(int i=0; i < pointsAsVector.size(); i++) 
+       {  PVector p = pointsAsVector.get(i); 
+          p.x = map(p.x, 0, displayWidth, 0, width); 
+          p.y = map(p.y, 0, displayHeight, 0, height); 
+     
+          pointsScaledToScreen.add(p); 
+        }
   } 
   public void LoadShapeData(){
 
@@ -49,10 +64,10 @@ import java.util.ArrayList;
         //get the next bit of data 
           //alternateLines and parse to points         
            points.add(Integer.parseInt(sc.next()));  
-           println(sc.next());
+           //println(sc.next());
       }
     }
-    println(points.size()); 
+    //println(points.size()); 
     //DrawShapeData();
     for(int j=0; j < points.size(); j=j+2){
      if(j < points.size()-1)
