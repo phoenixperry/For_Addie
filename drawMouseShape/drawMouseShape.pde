@@ -20,7 +20,7 @@ import java.util.*;
     pointsScaledToScreen = new ArrayList(); 
     size(400,400, P2D); 
 
-    stuff = loadStrings("keyTracker.txt");
+    stuff = loadStrings("../../saveMousePositions/keyTracker.txt");
     println("loaded"); 
     LoadShapeData(); 
     scaleToScreen();
